@@ -4,6 +4,8 @@
 * Set usermeta 'last_activity' if no key/value pair exists.
 * 
 * 
+* ################## This script is now outdated please do not use: see readme.md ########################
+* 
 * BP will not show users who have no valid meta pair set
 * 'last_activity' is set when users log in
 * The script forces a key/value in wp_usermeta to trick BuddyPress
