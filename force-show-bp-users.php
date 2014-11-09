@@ -1,14 +1,14 @@
 <?php
 
 /** 
-* Set usermeta 'last_activity' if no key/value pair exists.
+* Set BP forced 'last_activity' timestamp if no existing BP last activity found for a user.
 * 
 * 
-* ################## This script is now outdated please do not use: see readme.md ########################
+* ################## This script is now updated for BP 2.0 please see readme.md ########################
 * 
-* BP will not show users who have no valid meta pair set
+* BP will not show users who have no valid last activity recorded in activity table.
 * 'last_activity' is set when users log in
-* The script forces a key/value in wp_usermeta to trick BuddyPress
+* The script forces a timestamp entry to trick BuddyPress
 * into populating the members dir list.
 * 
 * This is strictly for  development purposes only where one needs to quickly
@@ -21,7 +21,7 @@
 * releasing to production.
 *
 * @author Hugo Ashmore hnla 
-* @version 1.0
+* @version 1.0.1
 */
 function fua_force_last_activity_meta() {
 global $wpdb;
@@ -37,11 +37,11 @@ global $wpdb;
 	
 		foreach($fua_user_ids as  $fua_user_id){
 	
-		$last_activity_exists =  get_user_meta($fua_user_id, 'last_activity');
+		$last_activity_exists =  BP_Core_User::get_last_activity( $fua_user_id );
 
 	
 			if( false == $last_activity_exists ) {
-				add_user_meta($fua_user_id, 'last_activity', date('Y-m-d H:i:s') );
+				bp_update_user_last_activity($fua_user_id,  date('Y-m-d H:i:s') );
 				// Lets try and get a different time stamp for each entry
 				sleep(2);	
 			} 
@@ -49,6 +49,6 @@ global $wpdb;
 	} // close get action
 
 }
-add_action('init', 'fua_force_last_activity_meta');
+add_action('bp_init', 'fua_force_last_activity_meta');
 
 ?>
