@@ -1,7 +1,7 @@
 force-show-bp-users
 ===================
 
-*Please Note that this script is now outdated, superceded by the new approach to storing user last activity in the bp activity table: http://bpdevel.wordpress.com/2014/02/21/user-last_activity-data-and-buddypress-2-0/ *
+<strike>*Please Note that this script is now outdated, superceded by the new approach to storing user last activity in the bp activity table:</strike> This script is now updated to use BP functions rather than WP usemeta: http://bpdevel.wordpress.com/2014/02/21/user-last_activity-data-and-buddypress-2-0/ *
 
 Short function to get WP usermeta 'last_activity' key/value if exists if not add a value for all WP users to enable BuddyPress to show users in it's lists.
 
