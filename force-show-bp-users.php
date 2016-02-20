@@ -40,7 +40,7 @@ global $wpdb;
 		$last_activity_exists =  BP_Core_User::get_last_activity( $fua_user_id );
 
 	
-			if( false == $last_activity_exists ) {
+			if( count($last_activity_exists) <= 1 ) {
 				bp_update_user_last_activity($fua_user_id,  date('Y-m-d H:i:s') );
 				// Lets try and get a different time stamp for each entry
 				sleep(2);	
